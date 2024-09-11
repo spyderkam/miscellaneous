@@ -42,7 +42,7 @@ class HDF5:
             for key in f.keys():
                 #print(key)
                 h5_dict[key] = f[key][()]                              # HDF5 full set. 
-                h5_varNames[key] = np.array(h5_dict[key].dtype.names)  # HDF5 set of the units.
+                h5_varNames[key] = np.array(h5_dict[key].dtype.names)  # HDF5 set w/usual keys and unit arrays as values.
 
             varNames = np.array([])                                    # Flat array of all the units.
             for key, variables in h5_varNames.items():
@@ -69,5 +69,5 @@ if __name__ == '__main__':
     h5_dict, h5_varNames, varNames = h5_file.genSets()[0], h5_file.genSets()[1], sorted(list(set(h5_file.genSets()[2])))
     # Note that the reasoning begind sorted(list(set(data))) should be obvious.
 
-    print(h5_dict["ArrayBias.out"].dtype)
-       
+    #print(h5_dict["ArrayBias.out"].dtype)
+    hdf5_headers = list(h5_varNames.keys())     # or list(h5_dict.keys())       
