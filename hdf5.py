@@ -17,8 +17,8 @@ class HDF5:
 
 
     def findVar(self, var_x):        # find variable
-        """Returns a dictionary whose keys are the keys which contain the variable and the values are lists
-        containing the indices of that variable in the respective HDF5 key."""        
+        """Returns a dictionary whose keys are the keys which contain the variable and the values
+        are lists containing the indices of that variable in the respective HDF5 key."""        
 
         h5_varNames, varNames = self.genSets()[1], self.genSets()[2]
         if var_x not in varNames:
