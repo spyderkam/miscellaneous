@@ -6,6 +6,10 @@ Finds the columns in the Master Spreadsheet that have only empyty cells, cells t
 
 ## `hdf5.py`
 
-This one might eventually become its own repository names **HDF5**.
+Create an `HDF5` class out of an `h5` type file and extract its full python dictionary; i.e., the data and data types. Can also find which keys contain a certain data type and what positions in the keys those data types are. 
+
+If managed to convert `hdf5` to `L-Series`, this one might eventually become its own repository named **HDF5**. 
 
 ## `storage.py`
+
+A collection of useful functions.
