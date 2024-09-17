@@ -14,7 +14,7 @@ def f7(seq):
 #print(f7(foo))
 
 
-def one_to_n(n: float) -> str:
+def one_to_n(n: int) -> str:
     if int(n) != n:
         raise ValueError("n must be an integer")
     else:
