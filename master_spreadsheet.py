@@ -33,8 +33,8 @@ class MasterSpreadsheet:
             (self.df).insert(position, header, values)
             (self.headers).insert(position, header)
         else:
-            #(self.df).insert(len(self.headers), header, values)
-            (self.df)[header] = values     # Better version of above line.
+            (self.df).insert(len(self.headers), header, values)
+            #(self.df)[header] = values     # Do not use this method, no dupilcate support.
             (self.headers).append(header)
             
 
@@ -43,11 +43,11 @@ if __name__ == "__main__":
     # You have to subtract (2 + skiprows) from the row number in Excel.
     # https://stackoverflow.com/questions/31593201/how-are-iloc-and-loc-different
 
-    import numpy as np
+    from storage import *
 
     ms = MasterSpreadsheet("Master_Spreadsheet.xlsx")
 
-    arr = np.zeros(len(ms.df))
+    arr = [i for i in range(len(ms.df))]
     ms.addColumn("NEW_COLUMN", arr, 1)
     print(ms.headers[1])
     
