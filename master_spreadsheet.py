@@ -36,7 +36,21 @@ class MasterSpreadsheet:
             (self.df).insert(len(self.headers), header, newCol)
             #(self.df)[header] = newCol     # Do not use this method, no dupilcate support.
             (self.headers).append(header)
-            
+
+
+    def addRow(self, newRow: list, position: int=None):
+        """Add new row to Master Spreadsheet."""
+
+        m, n = (ms.df).shape[0], (ms.df).shape[1]     # df is an m x n matrix
+        # [newRow manipulation for rows with pd.isna values]
+
+        if position is None:     # Create the new row at the end.
+            (ms.df).loc[m] = newRow
+        else:                    # Insert the new row before the end.
+            (ms.df).loc[position - 0.5] = newRow
+            (ms.df) = (ms.df).sort_index()
+            (ms.df).reset_index(drop=True, inplace=True)
+                        
 
 
 if __name__ == "__main__":
@@ -47,7 +61,10 @@ if __name__ == "__main__":
 
     ms = MasterSpreadsheet("Master_Spreadsheet.xlsx")
 
-    arr = [i for i in range(len(ms.df))]
-    ms.addColumn("NEW_COLUMN", arr, 1)
-    print(ms.headers[1])
-    
+    #arr1 = [i for i in range(len(ms.df))]
+    #ms.addColumn("NEW_COLUMN", arr1, 1)
+    #print(ms.headers[1])
+
+    m, n = ms.df.shape[0], ms.df.shape[1]
+    arr2 = np.zeros(n)
+    ms.addRow(arr2, 0)
