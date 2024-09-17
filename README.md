@@ -15,6 +15,9 @@ Create an `HDF5` class out of an `h5` type file and extract its full python dict
 **The Jassem Project:**
 Files are given in the form of HDF5 type and must be converted to L-Series.
 
+## `master_spreadsheet.py`
+Script to manipulate and work with the Master Spreadsheet used at GMDCL2.
+
 ## `storage.py`
 
 A collection of useful functions.
