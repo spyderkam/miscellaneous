@@ -27,14 +27,14 @@ class MasterSpreadsheet:
         return xl_col_to_name(self.headers.index(header))
 
 
-    def addColumn(self, header: str, values: list, position: int=None):
+    def addColumn(self, header: str, newCol: list, position: int=None):
         """Add new column to Master Spreadsheet."""
         if position is not None:
-            (self.df).insert(position, header, values)
+            (self.df).insert(position, header, newCol)
             (self.headers).insert(position, header)
         else:
-            (self.df).insert(len(self.headers), header, values)
-            #(self.df)[header] = values     # Do not use this method, no dupilcate support.
+            (self.df).insert(len(self.headers), header, newCol)
+            #(self.df)[header] = newCol     # Do not use this method, no dupilcate support.
             (self.headers).append(header)
             
 
