@@ -14,7 +14,7 @@ def f7(seq):
 #print(f7(foo))
 
 
-def one_to_n(n: int) -> str:
+def one_to_n(n: float) -> str:
     if int(n) != n:
         raise ValueError("n must be an integer")
     else:
@@ -51,3 +51,20 @@ def colNum_to_letters(column_int: int) -> str:
     
     return letter
 #print(colNum_to_letter(36))
+
+
+def preZeroString(n: int, digits: int) -> str:
+    if type(n) is str: n = float(n)
+    
+    if int(n) != n:
+        raise ValueError("n must be an integer")
+    else:
+        N = int(float(n))     # Includes "2.0". Doesn't have to be in if/else.
+
+    if len(str(N)) < digits:
+        return "0" * (digits - len(str(N))) + str(N)
+    elif len(str(N)) > digits:
+        raise ValueError(f"{N} must have less than {digits} digits")
+    else:
+        return str(N)
+#print(preZeroString(2.0, 5))
