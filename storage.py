@@ -14,12 +14,13 @@ def f7(seq):
 #print(f7(foo))
 
 
-def one_to_n(n: float) -> str:
+def one_to_n(n: int) -> str:
+    if type(n) is str: n = float(n)
+    
     if int(n) != n:
         raise ValueError("n must be an integer")
     else:
-        n = int(n)
-    # Currently does not support integer string for n; e.g., n = "8".
+        N = int(float(n))
     
     string = ""
     for i in range(1, n+1):
@@ -29,8 +30,12 @@ def one_to_n(n: float) -> str:
 
 
 def factorial(n: int) -> int:
+    if type(n) is str: n = float(n)
+    
     if int(n) != n:
         raise ValueError("n must be an integer")
+    else:
+        N = int(float(n))
     
     i = 1
     for j in range(2, n+1):
