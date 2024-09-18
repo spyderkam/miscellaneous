@@ -47,7 +47,7 @@ class MasterSpreadsheet:
         if position is None:     # Create the new row at the end.
             (ms.df).loc[m] = newRow
         else:                    # Insert the new row before the end.
-            (ms.df).loc[position - 0.5] = newRow
+            (ms.df).loc[position - 0.5] = newRow     # The 0.5 can be any number such that 0 < n < 1.
             (ms.df) = (ms.df).sort_index()
             (ms.df).reset_index(drop=True, inplace=True)
                         
