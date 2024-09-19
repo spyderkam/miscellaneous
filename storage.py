@@ -91,7 +91,7 @@ def runInParallel(*fns, daemonic=False):
   for fn in fns:
     p = Process(target=fn)
     if fn is fns[0] and daemonic is True:
-      p.daemon = True # have this process stop when the others end.
+      p.daemon = True     # Firsf process stops when others end.
       p.start()
     else:
       p.start()
