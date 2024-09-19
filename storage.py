@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.12
 
+from multiprocessing import Process
 import os
 
 def clear(): os.system('clear')
@@ -82,3 +83,19 @@ def isint(n: object) -> bool:
   else:
     return True  
 #print(isint(2.0), isint("2."))
+
+
+# https://stackoverflow.com/questions/7207309/how-to-run-functions-in-parallel
+def runInParallel(*fns, daemonic=False):
+  mainRunningFunctions = []
+  for fn in fns:
+    p = Process(target=fn)
+    if fn is fns[0] and daemonic is True:
+      p.daemon = True
+      p.start()
+    else:
+      p.start()
+      mainRunningFunctions.append(p)
+  for p in mainRunningFunctions:
+    p.join()
+#runInParallel(func1, func2, func3)
