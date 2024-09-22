@@ -99,3 +99,6 @@ def runInParallel(*fns, daemonic=False):
   for p in mainRunningFunctions:
     p.join()
 #runInParallel(func1, func2, func3)
+
+def range1(n):
+  return range(1, n+1)
