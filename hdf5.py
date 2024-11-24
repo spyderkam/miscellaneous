@@ -54,6 +54,7 @@ class HDF5:
 if __name__ == '__main__':
     '''Note that half of this sample—i.e., the txtFiles part—is strictly related to in lab stuff.
     So there is no point in analyzing it outside of the lab.'''
+    
     from glob import glob
 
     filename = "FTX-26_DEL LRDR-PRE-002E LRDR Sensor Data_TC1.h5"
