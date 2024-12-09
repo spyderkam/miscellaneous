@@ -26,7 +26,6 @@ class Table:
             row_number = (self.df).loc[(self.df)["Club"] == club, header].index[0] - 1     # Subtract 1 for index shift.
             column_number = (self.df).columns.get_loc(header)
             #column_letter = xlsxwriter.utility.xl_col_to_name(column_number)
-            #(self.df).iloc[row_number, column_number] = value
             (self.df).iloc[row_number, column_number] = value
         except (IndexError, KeyError) as err: 
             print(f"Error: {err}")
