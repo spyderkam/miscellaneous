@@ -3,14 +3,13 @@
 __author__ = "spyderkam"
 
 import pandas as pd
-#import xlsxwriter
 
 
 class Table:
     """Class of football league tables."""
     
     def __init__(self, path: str, excel: bool = False, sheet_name: str | int = 0) -> None:
-        self.path = path     # Path will just be the filename if it is in the same directory as this script.
+        self.path = path
         self.excel = excel
         if excel is True:
             self.sheet_name = sheet_name
@@ -23,10 +22,8 @@ class Table:
     def cell_value(self, club: str, header: str, value) -> None:
         """Update a cell value."""
         try:
-            row_number = (self.df).loc[(self.df)["Club"] == club, header].index[0] - 1     # Subtract 1 for index shift.
-            column_number = (self.df).columns.get_loc(header)
-            #column_letter = xlsxwriter.utility.xl_col_to_name(column_number)
-            (self.df).iloc[row_number, column_number] = value
+            row_number = (self.df).loc[(self.df)["Club"] == club, header].index[0]
+            (self.df).loc[row_number, header] = value
         except (IndexError, KeyError) as err: 
             print(f"Error: {err}")
         
@@ -62,9 +59,11 @@ class Table:
 
 if __name__ == "__main__":
     eplt = Table("epl_2425.csv", sheet_name="Table")
-    eplt.cell_value("Wolverhampton Wanderers", "Points", "50")
-    eplt.reorder()
+    eplt.cell_value("Wolverhampton Wanderers", "W", "50")
     print(eplt.df)
+    x = eplt.getValue("Wolverhampton Wanderers", "W")
+    #eplt.reorder()
+    print(x)
     #eplt.save()
     #eplt.change_clubData("Liverpool", [12, 10, 1, 1, 24, 8, 16, -10, "LLLLL"])
     
