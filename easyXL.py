@@ -3,13 +3,13 @@
 __author__ = "spyderkam"
 
 import pandas as pd
-import xlsxwriter
+#import xlsxwriter
 
 
 class Table:
     """Class of football league tables."""
     
-    def __init__(self, path: str, excel: bool = False, sheet_name: str or int = 0) -> None:
+    def __init__(self, path: str, excel: bool = False, sheet_name: str | int = 0) -> None:
         self.path = path     # Path will just be the filename if it is in the same directory as this script.
         self.excel = excel
         if excel is True:
@@ -67,5 +67,5 @@ if __name__ == "__main__":
     eplt.reorder()
     print(eplt.df)
     #eplt.save()
-    #eplt.change_clubData("Liverpool", (12, 10, 1, 1, 24, 8, 16, -10, "LLLLL"))
+    #eplt.change_clubData("Liverpool", [12, 10, 1, 1, 24, 8, 16, -10, "LLLLL"])
     
