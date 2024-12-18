@@ -10,6 +10,10 @@ def convert_indentation(file_path, to_two_spaces=True):
         # Process each line
         converted_lines = []
         for line in lines:
+            if line.strip() == "":
+                converted_lines.append(line)  # Keep empty lines unchanged
+                continue
+                
             # Count leading spaces
             leading_spaces = len(line) - len(line.lstrip())
             # Calculate new indentation
