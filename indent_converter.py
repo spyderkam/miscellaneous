@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 
 def convert_indentation(file_path, to_two_spaces=True):
@@ -16,13 +17,15 @@ def convert_indentation(file_path, to_two_spaces=True):
                 
             # Count leading spaces
             leading_spaces = len(line) - len(line.lstrip())
-            # Calculate new indentation
+            
             if to_two_spaces:
                 # Convert from 4 to 2 spaces
-                new_indent = ' ' * (leading_spaces // 2)
+                indent_level = leading_spaces // 4  # Get the indent level
+                new_indent = ' ' * (indent_level * 2)  # Convert to 2 spaces per level
             else:
                 # Convert from 2 to 4 spaces
-                new_indent = ' ' * (leading_spaces * 2)
+                indent_level = leading_spaces // 2  # Get the indent level
+                new_indent = ' ' * (indent_level * 4)  # Convert to 4 spaces per level
             
             # Replace old indentation with new
             converted_lines.append(new_indent + line.lstrip())
