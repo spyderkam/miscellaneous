@@ -1,5 +1,8 @@
-#!/usr/bin/env python3.12
+#!/usr/bin/env python3
 
+__author__ = "spyderkam"
+
+from datetime import datetime
 from multiprocessing import Process
 import os
 
@@ -102,3 +105,19 @@ def runInParallel(*fns, daemonic=False):
 
 def range1(n):
   return range(1, n+1)
+
+def mmddyy():
+    """Extracting the current date in MMDDYY format."""
+    
+    NOW = datetime.now()
+    YEAR = str(NOW.year)[2:]
+    MONTH = str(NOW.month)
+    DAY = str(NOW.day)
+
+    if len(MONTH) == 1:
+        MONTH = "0" + MONTH
+    if len(DAY) == 1:
+        DAY = "0" + DAY
+
+    return MONTH + DAY + YEAR, (MONTH, DAY, YEAR)
+    
