@@ -1,13 +1,13 @@
-#!/usr/bin/env python3
-
-__author__ = "spyderkam"
+#!/usr/bin/env python3.12
 
 from datetime import datetime
 from multiprocessing import Process
 import os
 
-def clear(): os.system('clear')
-#clear()
+def clear(): 
+  """Clear terminal."""
+  os.system('clear')
+
 
 # https://stackoverflow.com/questions/480214/how-do-i-remove-duplicates-from-a-list-while-preserving-order
 def f7(seq):
@@ -79,6 +79,7 @@ def preZeroString(n: int, digits: int) -> str:
 
 
 def isint(n: object) -> bool:
+  """Check if input is an integer."""
   if type(n) is str: n = float(n)
   
   if int(n) != n:
@@ -104,20 +105,21 @@ def runInParallel(*fns, daemonic=False):
 #runInParallel(func1, func2, func3)
 
 def range1(n):
+  """Returns a range of numbers from 1 to n."""
   return range(1, n+1)
 
 def mmddyy():
-    """Extracting the current date in MMDDYY format."""
-    
-    NOW = datetime.now()
-    YEAR = str(NOW.year)[2:]
-    MONTH = str(NOW.month)
-    DAY = str(NOW.day)
+  """Extracting the current date in MMDDYY format."""
+  
+  NOW = datetime.now()
+  YEAR = str(NOW.year)[2:]
+  MONTH = str(NOW.month)
+  DAY = str(NOW.day)
 
-    if len(MONTH) == 1:
-        MONTH = "0" + MONTH
-    if len(DAY) == 1:
-        DAY = "0" + DAY
+  if len(MONTH) == 1:
+    MONTH = "0" + MONTH
+  if len(DAY) == 1:
+    DAY = "0" + DAY
 
-    return MONTH + DAY + YEAR, (MONTH, DAY, YEAR)
+  return MONTH + DAY + YEAR, (MONTH, DAY, YEAR)
     
