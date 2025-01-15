@@ -2,6 +2,7 @@
 
 def convert_indentation(file_path, to_two_spaces=True):
     """Convert between 2 and 4 space indentation."""
+    
     try:
         # Read file content
         with open(file_path, 'r') as file:
@@ -33,8 +34,7 @@ def convert_indentation(file_path, to_two_spaces=True):
         with open(file_path, 'w') as file:
             file.writelines(converted_lines)
             
-        print(f"Successfully converted {file_path}")
-            
+        print(f"Successfully converted {file_path}")            
     except Exception as err:
         print(f"Error processing {file_path}: {str(err)}")
 
