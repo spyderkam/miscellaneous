@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 
+__author__ = "spyderkam"
+
 from datetime import datetime
 from multiprocessing import Process
 import os
+
 
 def clear(): 
   """Clear terminal."""
@@ -135,9 +138,11 @@ def runInParallel(*fns, daemonic=False):
     p.join()
 #runInParallel(func1, func2, func3)
 
+
 def range1(n):
   """Returns a range of numbers from 1 to n."""
   return range(1, n+1)
+
 
 def mmddyy():
   """Extracting the current date in MMDDYY format."""
