@@ -52,48 +52,6 @@ def factorial(n: int) -> int:
 #print(factorial(5))
 
 
-def getLetters(*headers, dataFrame):
-  """Get Excel column letters for given header names."""    
-  letters = {}
-  for header in headers:
-    column_number = dataFrame.columns.get_loc(header) 
-    letters[header] = colNum_to_letter(column_number)
-  return letters
-
-
-def getHeaders(*letters, dataFrame):
-  """Get header names for given Excel column letters."""
-  HEADERS = list(dataFrame.columns)
-  headers = {}
-  for letter in letters:
-    column_number = colLetter_to_Num(letter)
-    if column_number < len(HEADERS):
-      headers[letter] = HEADERS[column_number]
-  return headers
-
-
-# https://stackoverflow.com/questions/23861680/convert-spreadsheet-number-to-column-letter
-def colNum_to_letter(column_int: int) -> str:
-  """Same as xlsxwriter's utility.xl_col_to_name method."""
-    
-  start_index = 0
-  letter = ''
-  
-  while column_int > 25 + start_index:   
-    letter += chr(65 + int((column_int-start_index)/26) - 1)
-    column_int = column_int - (int((column_int-start_index)/26))*26
-  letter += chr(65 - start_index + (int(column_int)))
-  
-  return letter
-#print(colNum_to_letter(36))
-
-
-def colLetter_to_Num(letter: str) -> int:
-  """Convert Excel column letter to number (A=0, B=1, etc.)"""
-  return sum((ord(char) - ord('A') + 1) * (26 ** i)
-               for i, char in enumerate(reversed(letter))) - 1
-
-
 def preZeroString(n: int, digits: int) -> str:
   """Return a string of n with pre-zeroes."""
   if type(n) is str: n = float(n)
