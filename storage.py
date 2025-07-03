@@ -116,4 +116,27 @@ def mmddyy():
     DAY = "0" + DAY
 
   return MONTH + DAY + YEAR, (MONTH, DAY, YEAR)
-    
+
+
+def arrays_almost_equal(arr1, arr2, tolerance=0.01):
+  """Check if two NumPy arrays are almost equal."""
+
+  # Ensure arrays have the same shape
+  if arr1.shape != arr2.shape:
+      return False
+
+  # Convert inputs to numpy arrays
+  arr1 = np.array(arr1)
+  arr2 = np.array(arr2)
+
+  # Handle zero values to avoid division by zero
+  # For b == 0, check if |a| <= tolerance
+  mask_zero = arr2 == 0
+  zero_check = np.abs(arr1[mask_zero]) <= tolerance
+
+  # For non-zero values, check if |a - b| <= tolerance*|b|
+  mask_nonzero = ~mask_zero
+  relative_check = np.abs(arr1[mask_nonzero] – arr2[mask_nonzero]) <= tolerance*np.abs(arr2[mask_nonzero])
+
+  # Combine results: all zero cases and non-zero cases must pass
+  return np.all(zero_check) and np.all(relative_check)
