@@ -4,6 +4,7 @@ __author__ = "spyderkam"
 
 from datetime import datetime
 from multiprocessing import Process
+import numpy as np
 import os
 
 
