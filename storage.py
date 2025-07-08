@@ -141,3 +141,31 @@ def arrays_almost_equal(arr1, arr2, tolerance=0.01):
 
   # Combine results: all zero cases and non-zero cases must pass
   return np.all(zero_check) and np.all(relative_check)
+
+
+def arrays_within_delta(arr1, arr2, delta=1.0):
+  """
+  Check if corresponding elements of two NumPy arrays are within ±delta of each other.
+    
+  Parameters:
+  arr1 : array-like
+    First input array.
+  arr2 : array-like
+    Second input array.
+  delta : float, optional
+    Tolerance for equivalence (default is 1.0). Elements are equivalent if |arr1[i] - arr2[i]| <= delta.
+    
+  Returns:
+  bool
+    True if all corresponding elements are within ±delta, False otherwise.
+  """
+  # Convert inputs to NumPy arrays
+  arr1 = np.array(arr1)
+  arr2 = np.array(arr2)
+    
+  # Check if shapes match
+  if arr1.shape != arr2.shape:
+    return False
+    
+  # Check if absolute differences are <= delta
+  return np.all(np.abs(arr1 - arr2) <= delta)
